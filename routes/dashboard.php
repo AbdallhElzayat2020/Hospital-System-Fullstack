@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('dashboard', [HomeController::class,'index'])->name('dashboard');
+
+Route::get('/dashboard', function () {
+
+    return view('dashboard');
+
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+require __DIR__.'/auth.php';

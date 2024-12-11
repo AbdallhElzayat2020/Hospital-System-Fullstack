@@ -39,7 +39,7 @@
 				<div class="row row-sm">
 					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 						<div class="overflow-hidden card sales-card bg-primary-gradient">
-							<div class="pt-0 pt-3 pr-3 pb-2 pl-3">
+							<div class=" pt-3 pr-3 pb-2 pl-3">
 								<div class="">
 									<h6 class="mb-3 text-white tx-12">TODAY ORDERS</h6>
 								</div>
@@ -61,7 +61,7 @@
 					</div>
 					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 						<div class="overflow-hidden card sales-card bg-danger-gradient">
-							<div class="pt-0 pt-3 pr-3 pb-2 pl-3">
+							<div class=" pt-3 pr-3 pb-2 pl-3">
 								<div class="">
 									<h6 class="mb-3 text-white tx-12">TODAY EARNINGS</h6>
 								</div>
@@ -83,7 +83,7 @@
 					</div>
 					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 						<div class="overflow-hidden card sales-card bg-success-gradient">
-							<div class="pt-0 pt-3 pr-3 pb-2 pl-3">
+							<div class=" pt-3 pr-3 pb-2 pl-3">
 								<div class="">
 									<h6 class="mb-3 text-white tx-12">TOTAL EARNINGS</h6>
 								</div>
@@ -105,7 +105,7 @@
 					</div>
 					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 						<div class="overflow-hidden card sales-card bg-warning-gradient">
-							<div class="pt-0 pt-3 pr-3 pb-2 pl-3">
+							<div class=" pt-3 pr-3 pb-2 pl-3">
 								<div class="">
 									<h6 class="mb-3 text-white tx-12">PRODUCT SOLD</h6>
 								</div>
