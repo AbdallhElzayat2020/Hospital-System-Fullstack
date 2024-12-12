@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\dashboardAdminController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,13 +16,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('dashboard', [HomeController::class,'index'])->name('dashboard');
+// Dashboard Admin
 
-Route::get('/dashboard', function () {
+Route::get('dashboard/admin', [dashboardAdminController::class,'index'])->name('dashboard');
 
-    return view('dashboard');
 
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+// Dashboard User
+
+Route::get('/dashboard/user', function () {
+
+    return view('Dashboard.User.dashboard');
+
+})->middleware(['auth', 'verified'])->name('dashboard.user');
+
+
+
+
+
 
 
 

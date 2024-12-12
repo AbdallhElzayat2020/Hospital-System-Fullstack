@@ -189,7 +189,7 @@
 										</div>
 										<div id="collapseThree1" class="collapse b-b0 bg-white" aria-labelledby="headingThree" data-parent="#accordion">
 											<div class="border p-3">
-												<table class="table mb-0 table-bordered border-top mb-0">
+												<table class="table mb-0 table-bordered border-top">
 													<thead>
 													  <tr>
 														<th>#</th>
@@ -300,7 +300,7 @@
 <!--Internal  Datepicker js -->
 <script src="{{URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
 <!-- Internal Select2 js-->
-<script src="{{URL::asset('assets/plugins/select2/js/select2.min.js')}}"></script>	
+<script src="{{URL::asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 <!--- Internal Accordion Js -->
 <script src="{{URL::asset('assets/plugins/accordion/accordion.min.js')}}"></script>
 <script src="{{URL::asset('assets/js/accordion.js')}}"></script>

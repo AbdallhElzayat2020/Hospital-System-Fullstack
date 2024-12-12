@@ -1,5 +1,8 @@
 @extends('Dashboard.layouts.master')
 @section('css')
+@section('title')
+    Home Page
+@endsection
     <!--  Owl-carousel css-->
     <link href="{{ URL::asset('Dashboard/plugins/owl-carousel/owl.carousel.css') }}" rel="stylesheet" />
     <!-- Maps css -->
