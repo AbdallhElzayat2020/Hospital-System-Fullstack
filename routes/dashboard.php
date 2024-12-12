@@ -18,25 +18,30 @@ use Illuminate\Support\Facades\Route;
 
 // Dashboard Admin
 
-Route::get('dashboard/admin', [dashboardAdminController::class,'index'])->name('dashboard');
+Route::get('dashboard/admin', [dashboardAdminController::class, 'index'])->name('dashboard');
 
 
 
 
 
-// Dashboard User
+// Show Dashboard User
 
 Route::get('/dashboard/user', function () {
 
     return view('Dashboard.User.dashboard');
-
 })->middleware(['auth', 'verified'])->name('dashboard.user');
 
 
+// Show  Dashboard Admin
+
+
+Route::get('/dashboard/admin', function () {
+
+    return view('Dashboard.Admin.dashboard');
+})->middleware(['auth:admin', 'verified'])->name('dashboard.admin');
 
 
 
 
 
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

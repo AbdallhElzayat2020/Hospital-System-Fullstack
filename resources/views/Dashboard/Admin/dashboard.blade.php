@@ -1,8 +1,5 @@
 @extends('Dashboard.layouts.master')
 @section('css')
-@section('title')
-    Home Page
-@endsection
     <!--  Owl-carousel css-->
     <link href="{{ URL::asset('Dashboard/plugins/owl-carousel/owl.carousel.css') }}" rel="stylesheet" />
     <!-- Maps css -->
@@ -13,7 +10,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="left-content">
             <div>
-                <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back!</h2>
+                <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back! admin</h2>
                 <p class="mg-b-0">Sales monitoring dashboard template.</p>
             </div>
         </div>

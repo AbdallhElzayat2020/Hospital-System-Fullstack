@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -16,9 +17,32 @@ Route::middleware('guest')->group(function () {
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
-    Route::get('/user/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 
-    Route::post('/user/login', [AuthenticatedSessionController::class, 'store'])->name('login.user');
+    //########################################   Login Route User  ########################################
+
+    Route::get('/user/login', [AuthenticatedSessionController::class, 'create'])
+        ->name('login');
+
+    Route::post('/user/login', [AuthenticatedSessionController::class, 'store'])
+        ->name('login.user');
+
+    //########################################   Login Route Admin  ########################################
+    Route::get('/admin/login', [AdminController::class, 'create'])->name('admin.login');
+    Route::post('/admin/login', [AdminController::class, 'store'])->name('login.admin');
+});
+
+    // User Logout Route
+    Route::post('/user/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout.user');
+
+    // Admin Logout Route
+    Route::post('/admin/logout', [AdminController::class, 'destroy'])
+    ->middleware('auth:admin')
+    ->name('logout.admin');
+
+    Route::middleware('guest')->group(function () {
+    //########################################   Forgot Password Route  ########################################
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
 
@@ -46,7 +70,4 @@ Route::middleware('auth')->group(function () {
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
-
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('logout');
 });
