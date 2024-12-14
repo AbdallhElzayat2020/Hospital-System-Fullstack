@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\dashboardAdminController;
-
+use App\Http\Controllers\Dashboard\SectionController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -38,22 +38,41 @@ Route::group(
     ],
     function () {
 
-        // Show Dashboard User
+
+        //###########################################   start  Dashboard User ###########################################
 
         Route::get('/dashboard/user', function () {
 
             return view('Dashboard.User.dashboard');
         })->middleware(['auth', 'verified'])->name('dashboard.user');
 
+        //###########################################   End  Dashboard User ###########################################
 
-        // Show  Dashboard Admin
-
+        //###########################################   start  Dashboard Admin ###########################################
 
         Route::get('/dashboard/admin', function () {
 
             return view('Dashboard.Admin.dashboard');
         })->middleware(['auth:admin', 'verified'])->name('dashboard.admin');
 
+
+        //###########################################   End  Dashboard Admin ###########################################
+
+
+        Route::middleware('auth:admin')->group(function () {
+
+
+            Route::resource('sections', SectionController::class);
+
+
+        });
+
+
+
+
+
+
+        // Required Auth Routes
         require __DIR__ . '/auth.php';
     }
 );
