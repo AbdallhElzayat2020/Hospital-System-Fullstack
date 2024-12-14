@@ -7,6 +7,7 @@ return [
     'sections' => 'الاقسام',
     'AllSections' => 'كل الاقسام',
 
-
+    'Admin_Dashboard' => 'لوحة التحكم الادمن',
+    'user_Dashboard' => 'لوحة المستخدم',
 
 ];

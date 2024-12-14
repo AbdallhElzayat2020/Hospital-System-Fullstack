@@ -4,6 +4,9 @@
     <link href="{{ URL::asset('Dashboard/plugins/owl-carousel/owl.carousel.css') }}" rel="stylesheet" />
     <!-- Maps css -->
     <link href="{{ URL::asset('Dashboard/plugins/jqvmap/jqvmap.min.css') }}" rel="stylesheet">
+    @section('title')
+        {{ __('Dashboard/main-sidebar_trans.Admin_Dashboard') }}
+    @endsection
 @endsection
 @section('page-header')
     <!-- breadcrumb -->

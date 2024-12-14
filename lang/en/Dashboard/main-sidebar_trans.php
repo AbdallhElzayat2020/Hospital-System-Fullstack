@@ -7,5 +7,7 @@ return [
     'index'=>'Home',
     'sections'=>'Sections',
     'AllSections' => 'AllSections',
+    'Admin_Dashboard'=>'Admin Dashboard',
+    'user_Dashboard'=>'User Dashboard',
 
 ];
