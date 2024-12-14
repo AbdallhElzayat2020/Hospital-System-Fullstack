@@ -16,29 +16,32 @@ class sectionRepository implements SectionRepositoryInterface
         return view('Dashboard.Sections.index', compact('sections'));
     }
 
-    // Create New Section
-    public function create()
-    {
-        return view('Dashboard.Sections.create');
-    }
-
+    // insert function
     public function store($request)
     {
-
-    }
-
-    public function edit($id)
-    {
-        //
+        Section::create([
+            'name' => $request->name,
+        ]);
+        session()->flash('add');
+        return redirect()->route('sections.index');
     }
 
     public function update($request)
     {
-        //
+        $section = Section::findOrFail($request->id);
+        $section->update([
+            'name' => $request->input('name'),
+        ]);
+        session()->flash('edit');
+        return redirect()->route('sections.index');
     }
+
 
     public function destroy($request)
     {
-        //
+        Section::findOrFail($request->id)->delete();
+        session()->flash('delete');
+        return redirect()->route('sections.index');
     }
+
 }

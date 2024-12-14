@@ -1,11 +1,14 @@
 @extends('Dashboard.layouts.master')
 @section('css')
-    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
-    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
-    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <!-- Internal Data table css -->
+    <link href="{{URL::asset('Dashboard/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
+    <link href="{{URL::asset('Dashboard/plugins/datatable/css/buttons.bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('Dashboard/plugins/datatable/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
+    <link href="{{URL::asset('Dashboard/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('Dashboard/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('Dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+    <!--Internal   Notify -->
+    <link href="{{URL::asset('dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
 @section('title')
     {{ __('Dashboard/main-sidebar_trans.AllSections') }}
 @endsection
@@ -24,6 +27,8 @@
 @endsection
 @section('content')
 <!-- row -->
+
+@include('Dashboard.messages_alert')
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
@@ -52,10 +57,14 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $section->name }}</td>
-                                    <td>{{ $section->created_at }}</td>
+                                    <td>{{ $section->created_at->diffForHumans() }}</td>
                                     <td>
-                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"  data-toggle="modal" href="#edit{{$section->id}}"><i class="las la-pen"></i></a>
-                                        <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$section->id}}"><i class="las la-trash"></i></a>
+                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                            data-toggle="modal" href="#edit{{ $section->id }}"><i
+                                                class="las la-pen"></i></a>
+                                        <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
+                                            data-toggle="modal" href="#delete{{ $section->id }}"><i
+                                                class="las la-trash"></i></a>
                                     </td>
 
                                 </tr>
@@ -83,6 +92,7 @@
 <!-- main-content closed -->
 @endsection
 @section('js')
+<!-- Internal Data tables -->
 <script src="{{ URL::asset('Dashboard/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ URL::asset('Dashboard/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
 <script src="{{ URL::asset('Dashboard/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
@@ -101,4 +111,7 @@
 <script src="{{ URL::asset('Dashboard/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
 <!--Internal  Datatable js -->
 <script src="{{ URL::asset('Dashboard/js/table-data.js') }}"></script>
+<!--Internal  Notify js -->
+<script src="{{ URL::asset('dashboard/plugins/notify/js/notifIt.js') }}"></script>
+<script src="{{ URL::asset('/plugins/notify/js/notifit-custom.js') }}"></script>
 @endsection
