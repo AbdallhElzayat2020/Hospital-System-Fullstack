@@ -23,7 +23,9 @@ class sectionRepository implements SectionRepositoryInterface
             'name' => $request->name,
         ]);
         session()->flash('add');
-        return redirect()->route('sections.index');
+        return redirect()->route('sections.index')->with('add');
+
+        // return redirect()->with('add success completely');
     }
 
     public function update($request)
