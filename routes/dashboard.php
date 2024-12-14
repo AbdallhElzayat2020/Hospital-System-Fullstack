@@ -63,12 +63,7 @@ Route::group(
 
 
             Route::resource('sections', SectionController::class);
-
-
         });
-
-
-
 
 
 
