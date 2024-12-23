@@ -3,7 +3,7 @@
 namespace App\Repository\Sections;
 
 use App\Interfaces\Sections\SectionRepositoryInterface;
-use App\Models\Section;
+use App\Models\Sections\Section;
 
 class sectionRepository implements SectionRepositoryInterface
 {
@@ -44,6 +44,9 @@ class sectionRepository implements SectionRepositoryInterface
         Section::findOrFail($request->id)->delete();
         session()->flash('delete');
         return redirect()->route('sections.index');
+    }
+    public function test($id) {
+        $sections=Section::findOrFail($id);
     }
 
 }
