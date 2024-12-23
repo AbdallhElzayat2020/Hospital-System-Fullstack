@@ -45,8 +45,8 @@ class sectionRepository implements SectionRepositoryInterface
         session()->flash('delete');
         return redirect()->route('sections.index');
     }
-    public function test($id) {
-        $sections=Section::findOrFail($id);
+    public function test($id)
+    {
+        $sections = Section::findOrFail($id);
     }
-
 }
