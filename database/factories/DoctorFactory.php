@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App;
-use App\Models\Doctors\Doctor;
+use App\Models\Doctor;
 use Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,12 +24,15 @@ class DoctorFactory extends Factory
     public function definition(): array
     {
         return [
-            // 'name' => fake()->name(),
+            'name' => fake()->name(),
+            'appointments' => fake()->randomElement(['saturday', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday']),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
+            'password' => Hash::make('password'), // password
             'phone' => fake()->phoneNumber(),
-            'price' => fake()->randomElement([100,200,300,400,500]),
+            'price' => fake()->numberBetween(100, 500),
         ];
+
+
     }
 }
