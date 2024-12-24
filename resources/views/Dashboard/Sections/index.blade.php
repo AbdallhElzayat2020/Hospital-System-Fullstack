@@ -28,10 +28,10 @@
 @section('content')
 <!-- row -->
 
-{{-- @include('Dashboard.messages_alert') --}}
+@include('Dashboard.messages_alert')
 
 
-
+{{-- 
 @if (session('add'))
     <div class="alert alert-success">{{ session('add') }}</div>
 @endif
@@ -40,7 +40,7 @@
 @endif
 @if (session('delete'))
     <div class="alert alert-success">{{ session('delete') }}</div>
-@endif
+@endif --}}
 
 
 
