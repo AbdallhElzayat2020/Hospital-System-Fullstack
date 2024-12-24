@@ -12,16 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('doctor_translations', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->integer('doctor_id')->unsigned();
             $table->string('locale')->index();
-
-            // Foreign key to the main model
-            $table->unsignedInteger('doctor_id');
-            $table->unique(['doctor_id', 'locale']);
-            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
-
-            // Actual fields you want to translate
             $table->string('name');
+            $table->string('appointments'); //  المواعيد
+            $table->unique(['doctor_id','locale']);
+            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
         });
     }
 
