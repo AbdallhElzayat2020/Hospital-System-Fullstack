@@ -20,7 +20,7 @@ class DoctorSeeder extends Seeder
 
             'email' => fake()->unique()->safeEmail(),
             'name' => fake()->name(),
-            'appointments'=>fake()->randomElement(['']),
+            'appointments'=>fake()->randomElement(['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']),
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'phone' => fake()->phoneNumber(),
