@@ -17,7 +17,10 @@ class DoctorSeeder extends Seeder
     //    Doctor::factory(30)->create();
        Doctor::updateOrCreate(
         [
+
             'email' => fake()->unique()->safeEmail(),
+            'name' => fake()->name(),
+            'appointments'=>fake()->randomElement(['']),
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'phone' => fake()->phoneNumber(),
