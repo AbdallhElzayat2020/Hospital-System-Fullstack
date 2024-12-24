@@ -3,11 +3,12 @@
 return [
 
 
-    'Main'=>'Hospital management software',
-    'index'=>'Home',
-    'sections'=>'Sections',
+    'Main' => 'Hospital management software',
+    'index' => 'Home',
+    'sections' => 'Sections',
     'AllSections' => 'AllSections',
-    'Admin_Dashboard'=>'Admin Dashboard',
-    'user_Dashboard'=>'User Dashboard',
-
+    'Admin_Dashboard' => 'Admin Dashboard',
+    'user_Dashboard' => 'User Dashboard',
+    'Doctors' => 'Doctors',
+    'AllDoctors' => 'All Doctors',
 ];

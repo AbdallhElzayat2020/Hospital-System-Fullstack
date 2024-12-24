@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\dashboardAdminController;
+use App\Http\Controllers\Dashboard\Doctors\DoctorController;
 use App\Http\Controllers\Dashboard\SectionController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -20,9 +21,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 // Dashboard Admin
 
 Route::get('dashboard/admin', [dashboardAdminController::class, 'index'])->name('dashboard');
-
-
-
 
 
 Route::group(
@@ -61,7 +59,12 @@ Route::group(
 
         Route::group(['middleware' => 'auth:admin'], function () {
 
+            // Sections Routes
             Route::resource('sections', SectionController::class);
+            // Doctor Routes
+            Route::resource('doctors', DoctorController::class);
+
+
         });
 
         // Required Auth Routes

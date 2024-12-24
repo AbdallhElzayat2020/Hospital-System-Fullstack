@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             UserSeeder::class,
             DoctorSeeder::class,
+            ImageSeeder::class,
 
         ]);
         // \App\Models\User::factory(10)->create();

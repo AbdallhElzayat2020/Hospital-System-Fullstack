@@ -9,5 +9,6 @@ return [
 
     'Admin_Dashboard' => 'لوحة التحكم الادمن',
     'user_Dashboard' => 'لوحة المستخدم',
-
+    'Doctors' => 'الاطباء',
+    'AllDoctors' => 'كل الاطباء',
 ];
