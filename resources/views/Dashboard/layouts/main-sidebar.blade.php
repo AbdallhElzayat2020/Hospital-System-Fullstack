@@ -58,7 +58,9 @@
                     </svg><span class="side-menu__label">{{ trans('Dashboard/main-sidebar_trans.sections') }}</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{ route('sections.index') }}">{{__('Dashboard/main-sidebar_trans.AllSections')}}</a></li>
+                    <li><a class="slide-item"
+                            href="{{ route('sections.index') }}">{{ __('Dashboard/main-sidebar_trans.AllSections') }}</a>
+                    </li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-flot')) }}">Flot Charts</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-chartjs')) }}">ChartJS</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-echart')) }}">Echart</a></li>

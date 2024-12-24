@@ -22,10 +22,8 @@ class sectionRepository implements SectionRepositoryInterface
         Section::create([
             'name' => $request->name,
         ]);
-        session()->flash('add');
-        return redirect()->route('sections.index')->with('add');
-
-        // return redirect()->with('add success completely');
+        session()->flash('add', __('Dashboard/messages.add'));
+        return redirect()->route('sections.index');
     }
 
     public function update($request)
@@ -34,19 +32,14 @@ class sectionRepository implements SectionRepositoryInterface
         $section->update([
             'name' => $request->input('name'),
         ]);
-        session()->flash('edit');
+        session()->flash('edit', __('Dashboard/messages.edit'));
         return redirect()->route('sections.index');
     }
-
 
     public function destroy($request)
     {
         Section::findOrFail($request->id)->delete();
-        session()->flash('delete');
+        session()->flash('delete', __('Dashboard/messages.delete'));
         return redirect()->route('sections.index');
-    }
-    public function test($id)
-    {
-        $sections = Section::findOrFail($id);
     }
 }

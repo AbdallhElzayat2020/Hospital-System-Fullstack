@@ -1,14 +1,14 @@
 @extends('Dashboard.layouts.master')
 @section('css')
     <!-- Internal Data table css -->
-    <link href="{{URL::asset('Dashboard/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
-    <link href="{{URL::asset('Dashboard/plugins/datatable/css/buttons.bootstrap4.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('Dashboard/plugins/datatable/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
-    <link href="{{URL::asset('Dashboard/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('Dashboard/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('Dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <!--Internal   Notify -->
-    <link href="{{URL::asset('dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
+    <link href="{{ URL::asset('Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @section('title')
     {{ __('Dashboard/main-sidebar_trans.AllSections') }}
 @endsection
@@ -28,7 +28,22 @@
 @section('content')
 <!-- row -->
 
-@include('Dashboard.messages_alert')
+{{-- @include('Dashboard.messages_alert') --}}
+
+
+
+@if (session('add'))
+    <div class="alert alert-success">{{ session('add') }}</div>
+@endif
+@if (session('edit'))
+    <div class="alert alert-success">{{ session('edit') }}</div>
+@endif
+@if (session('delete'))
+    <div class="alert alert-success">{{ session('delete') }}</div>
+@endif
+
+
+
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
@@ -60,11 +75,13 @@
                                     <td>{{ $section->created_at->diffForHumans() }}</td>
                                     <td>
                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                            data-toggle="modal" href="#edit{{ $section->id }}"><i
-                                                class="las la-pen"></i></a>
+                                            data-toggle="modal" href="#edit{{ $section->id }}">
+                                            <i class="las la-pen"></i>
+                                        </a>
                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                            data-toggle="modal" href="#delete{{ $section->id }}"><i
-                                                class="las la-trash"></i></a>
+                                            data-toggle="modal" href="#delete{{ $section->id }}">
+                                            <i class="las la-trash"></i>
+                                        </a>
                                     </td>
 
                                 </tr>
@@ -112,6 +129,6 @@
 <!--Internal  Datatable js -->
 <script src="{{ URL::asset('Dashboard/js/table-data.js') }}"></script>
 <!--Internal  Notify js -->
-<script src="{{ URL::asset('dashboard/plugins/notify/js/notifIt.js') }}"></script>
-<script src="{{ URL::asset('/plugins/notify/js/notifit-custom.js') }}"></script>
+<script src="{{ URL::asset('Dashboard/plugins/notify/js/notifIt.js') }}"></script>
+<script src="{{ URL::asset('Dashboard/plugins/notify/js/notifit-custom.js') }}"></script>
 @endsection

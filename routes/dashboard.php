@@ -25,12 +25,6 @@ Route::get('dashboard/admin', [dashboardAdminController::class, 'index'])->name(
 
 
 
-
-
-
-
-
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -39,7 +33,7 @@ Route::group(
     function () {
 
 
-        //###########################################   start  Dashboard User ###########################################
+        //###########################################   start  Dashboard User #########################################
 
         Route::get('/dashboard/user', function () {
 
@@ -48,7 +42,7 @@ Route::group(
 
         //###########################################   End  Dashboard User ###########################################
 
-        //###########################################   start  Dashboard Admin ###########################################
+        //###########################################   start  Dashboard Admin ########################################
 
         Route::get('/dashboard/admin', function () {
 
@@ -56,16 +50,19 @@ Route::group(
         })->middleware(['auth:admin', 'verified'])->name('dashboard.admin');
 
 
-        //###########################################   End  Dashboard Admin ###########################################
+        //###########################################   End  Dashboard Admin ##########################################
+
+        // sesond way
+        // Route::middleware('auth:admin')->group(function () {
 
 
-        Route::middleware('auth:admin')->group(function () {
+        //     Route::resource('sections', SectionController::class);
+        // });
 
+        Route::group(['middleware' => 'auth:admin'], function () {
 
             Route::resource('sections', SectionController::class);
         });
-
-
 
         // Required Auth Routes
         require __DIR__ . '/auth.php';

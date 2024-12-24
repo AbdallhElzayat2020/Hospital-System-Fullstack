@@ -12,36 +12,25 @@
     </div>
 @endif
 
-
-@if (session()->has('add'))
-    <script>
-        window.onload = function() {
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        @if (session('add'))
             notif({
-                msg: "{{ trans('Dashboard/messages.add') }}",
+                msg: "{{ session('add') }}",
                 type: "success"
             });
-        }
-    </script>
-@endif
-
-@if (session()->has('edit'))
-    <script>
-        window.onload = function() {
+        @endif
+        @if (session('edit'))
             notif({
-                msg: "{{ trans('Dashboard/messages.edit') }}",
+                msg: "{{ session('edit') }}",
                 type: "success"
             });
-        }
-    </script>
-@endif
-
-@if (session()->has('delete'))
-    <script>
-        window.onload = function() {
+        @endif
+        @if (session('delete'))
             notif({
-                msg: "{{ trans('Dashboard/messages.delete') }}",
+                msg: "{{ session('delete') }}",
                 type: "success"
             });
-        }
-    </script>
-@endif
+        @endif
+    });
+</script>
