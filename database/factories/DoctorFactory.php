@@ -2,11 +2,9 @@
 
 namespace Database\Factories;
 
-use App;
 use App\Models\Doctor;
-use Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use Illuminate\Support\Facades\Hash;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Doctors\Doctor>
  */
@@ -32,7 +30,5 @@ class DoctorFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'price' => fake()->numberBetween(100, 500),
         ];
-
-
     }
 }
