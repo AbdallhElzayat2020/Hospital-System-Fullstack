@@ -12,13 +12,11 @@ use Illuminate\Support\Facades\Hash;
  */
 class DoctorFactory extends Factory
 {
-
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-
     protected $model = Doctor::class;
 
     public function definition(): array
