@@ -3,11 +3,11 @@
 namespace App\Repository\Sections;
 
 use App\Interfaces\Sections\SectionRepositoryInterface;
-use App\Models\Sections\Section;
+use App\Models\Section;
+use App\Models\User;
 
 class sectionRepository implements SectionRepositoryInterface
 {
-
 
     // Get All Sections
     public function index()
@@ -22,6 +22,7 @@ class sectionRepository implements SectionRepositoryInterface
         Section::create([
             'name' => $request->name,
         ]);
+
         session()->flash('add', __('Dashboard/messages.add'));
         return redirect()->route('sections.index');
     }

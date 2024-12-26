@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Sections;
+namespace App\Models;
 
 use Astrotomic\Translatable\Translatable;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;

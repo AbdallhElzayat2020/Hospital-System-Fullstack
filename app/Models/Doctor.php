@@ -15,7 +15,7 @@ class Doctor extends Model
 
     public $translatedAttributes = ['name', 'appointments'];
 
-    public $fillable = ['email', 'email_verified_at', 'password', 'phone', 'price', 'name', 'appointments'];
+    public $fillable = ['email', 'email_verified_at', 'password', 'phone', 'price', 'name', 'appointments', 'section_id'];
 
     /**
      * Get the Doctor's image polymorphic relationship
@@ -24,5 +24,4 @@ class Doctor extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
-
 }
