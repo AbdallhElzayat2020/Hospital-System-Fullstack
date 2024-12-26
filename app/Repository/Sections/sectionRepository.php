@@ -15,7 +15,6 @@ class sectionRepository implements SectionRepositoryInterface
         $sections = Section::paginate(10);
         return view('Dashboard.Sections.index', compact('sections'));
     }
-
     // insert function
     public function store($request)
     {

@@ -12,10 +12,18 @@ class Doctor extends Model
 {
     use HasFactory, Translatable;
 
-
     public $translatedAttributes = ['name', 'appointments'];
 
-    public $fillable = ['email', 'email_verified_at', 'password', 'phone', 'price', 'name', 'appointments', 'section_id'];
+    public $fillable = [
+        'email',
+        'email_verified_at',
+        'password',
+        'phone',
+        'price',
+        'name',
+        'appointments',
+        'section_id', //relation with section
+    ];
 
     /**
      * Get the Doctor's image polymorphic relationship

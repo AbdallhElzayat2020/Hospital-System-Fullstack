@@ -20,7 +20,14 @@ class SectionFactory extends Factory
     {
         return [
             // 'name' => fake()->name(),
-            'name' => fake()->randomElement(['قسم الجراحة', 'المعمل']),
+            'name' => fake()->unique()->randomElement([
+                'قسم المخ والاعصاب',
+                'قسم الجراحة',
+                'قسم الاطفال',
+                'قسم النساء والتوليد',
+                'قسم العيون',
+                'قسم الباطنة'
+            ]),
         ];
     }
 }

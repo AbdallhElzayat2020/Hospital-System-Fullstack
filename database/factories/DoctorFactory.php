@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Section;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Doctors\Doctor>
  */
