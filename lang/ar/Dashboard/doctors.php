@@ -12,4 +12,16 @@ return [
     'Close' => 'اغلاق',
     'required' => 'هذا الحقل مطلوب',
 
+    'doctor_name' => 'اسم الطبيب',
+    'doctor_email' => 'البريد الالكتروني',
+    'phone' => 'الهاتف',
+    'price' => 'السعر',
+    'appointments' => 'المواعيد',
+    'doctor_section' => 'القسم',
+    'Operations' => 'العمليات',
+    'status' => 'الحالة',
+    'Active' => 'مفعل',
+    'NotActive' => 'غير مفعل',
+    'date' => 'التاريخ',
+
 ];

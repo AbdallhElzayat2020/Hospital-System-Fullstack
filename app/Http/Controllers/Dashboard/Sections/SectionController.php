@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Sections;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Sections\SectionRequest;
 use App\Interfaces\Sections\SectionRepositoryInterface;
-use App\Repository\Sections\sectionRepository;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller

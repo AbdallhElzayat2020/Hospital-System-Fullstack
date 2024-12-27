@@ -32,4 +32,12 @@ class Doctor extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    /**
+     * Get the Section Name relationship
+     */
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
 }

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Dashboard\dashboardAdminController;
 use App\Http\Controllers\Dashboard\Doctors\DoctorController;
-use App\Http\Controllers\Dashboard\SectionController;
+use App\Http\Controllers\Dashboard\Sections\SectionController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -63,8 +63,6 @@ Route::group(
             Route::resource('sections', SectionController::class);
             // Doctor Routes
             Route::resource('doctors', DoctorController::class);
-
-
         });
 
         // Required Auth Routes
