@@ -23,11 +23,20 @@ class DoctorController extends Controller
         return $this->doctor->index();
     }
 
+    public function create()
+    {
+        return $this->doctor->create();
+    }
+
     public function store(Request $request)
     {
         return $this->doctor->store($request);
     }
 
+    public function edit($id)
+    {
+        return $this->doctor->edit($id);
+    }
 
     public function update(Request $request)
     {

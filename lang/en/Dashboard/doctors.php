@@ -22,4 +22,6 @@ return [
     'Active' => 'Active',
     'NotActive' => 'Not Active',
     'date' => 'Date',
+    'doctor_photo' => 'Doctor Photo',
+    'password' => 'Password',
 ];

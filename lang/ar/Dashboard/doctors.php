@@ -23,5 +23,6 @@ return [
     'Active' => 'مفعل',
     'NotActive' => 'غير مفعل',
     'date' => 'التاريخ',
-
+    'doctor_photo' => 'صورة الطبيب',
+    'password' => 'كلمة المرور',
 ];

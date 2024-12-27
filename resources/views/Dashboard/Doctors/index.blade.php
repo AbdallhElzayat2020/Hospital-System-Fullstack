@@ -37,9 +37,10 @@
         <div class="card">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add">
+                    <a href="{{ route('doctors.create') }}" class="btn btn-primary">
                         {{ trans('Dashboard/doctors.add_doctor') }}
-                    </button>
+                    </a>
+
                 </div>
             </div>
             <div class="card-body">
@@ -95,7 +96,6 @@
                                         </a>
                                     </td>
                                 </tr>
-                                @include('Dashboard.Doctors.edit')
                                 @include('Dashboard.Doctors.delete')
                             @empty
                                 <tr>
@@ -109,7 +109,6 @@
                 </div>
             </div><!-- bd -->
         </div><!-- bd -->
-        @include('Dashboard.Doctors.add')
     </div>
 </div>
 

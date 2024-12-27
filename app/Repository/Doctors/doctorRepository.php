@@ -4,6 +4,7 @@ namespace App\Repository\Doctors;
 
 use App\Interfaces\Doctors\DoctorRepositoryInterface;
 use App\Models\Doctor;
+use App\Models\Section;
 
 class doctorRepository implements DoctorRepositoryInterface
 {
@@ -16,23 +17,25 @@ class doctorRepository implements DoctorRepositoryInterface
 
     public function create()
     {
-        $doctors = Doctor::all();
-        return view('Dashboard.Doctors.create', compact('doctors'));
+        $sections = Section::all();
+        // return "test";
+        return view('Dashboard.Doctors.create', compact('sections'));
     }
 
     public function store($request)
     {
-        $doctor = new Doctor();
-        $doctor->name = $request->name;
-        $doctor->email = $request->email;
-        $doctor->password = $request->password;
-        $doctor->phone = $request->phone;
-        $doctor->price = $request->price;
-        $doctor->appointments = $request->appointments;
-        $doctor->section_id = $request->section_id;
-        $doctor->save();
-        session()->flash('add', __('Dashboard/messages.add'));
-        return redirect()->route('doctors.index');
+        // $doctor = new Doctor();
+        // $doctor->name = $request->name;
+        // $doctor->email = $request->email;
+        // $doctor->password = $request->password;
+        // $doctor->phone = $request->phone;
+        // $doctor->price = $request->price;
+        // $doctor->appointments = $request->appointments;
+        // $doctor->section_id = $request->section_id;
+        // $doctor->save();
+        // session()->flash('add', __('Dashboard/messages.add'));
+        // return redirect()->route('doctors.index');
+
     }
 
     public function edit($id)
@@ -53,6 +56,11 @@ class doctorRepository implements DoctorRepositoryInterface
         $doctor->appointments = $request->appointments;
         $doctor->section_id = $request->section_id;
         $doctor->save();
+
+        // return response()->json([
+        //     'status' => true,
+        //     'msg' => 'Doctor Updated Successfully',
+        // ]);
         session()->flash('add', __('Dashboard/messages.add'));
         return redirect()->route('doctors.index');
     }
