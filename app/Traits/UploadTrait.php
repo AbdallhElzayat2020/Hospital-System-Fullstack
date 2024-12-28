@@ -25,6 +25,7 @@ trait UploadTrait
 
             $filename = $name . '.' . $photo->getClientOriginalExtension();
 
+
             //insert Image in DB with Plolymorphic relationship
             $Image = new Image();
 

@@ -5,10 +5,12 @@ namespace App\Repository\Doctors;
 use App\Interfaces\Doctors\DoctorRepositoryInterface;
 use App\Models\Doctor;
 use App\Models\Section;
+use App\Traits\UploadTrait;
 
 class doctorRepository implements DoctorRepositoryInterface
 {
 
+    use UploadTrait;
     public function index()
     {
         $doctors = Doctor::all();
