@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 trait UploadTrait
@@ -14,7 +15,7 @@ trait UploadTrait
 
             if (!$request->file($inputname)->isValid()) {
 
-                flash('Invalid Image')->error();
+                Session::flash('Invalid Image');
 
                 return redirect()->back()->withInput();
             }
@@ -24,7 +25,6 @@ trait UploadTrait
             $name = Str::slug($request->input('name'));
 
             $filename = $name . '.' . $photo->getClientOriginalExtension();
-
 
             //insert Image in DB with Plolymorphic relationship
             $Image = new Image();
