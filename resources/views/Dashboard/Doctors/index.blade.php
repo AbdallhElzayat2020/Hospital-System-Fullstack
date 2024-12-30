@@ -83,6 +83,7 @@
                                         {{ $doctor->status == 1 ? trans('Dashboard/doctors.Active') : trans('Dashboard/doctors.NotActive') }}
                                     </td>
                                     <td>{{ $doctor->appointments }}</td>
+                                    {{-- section name from relationship --}}
                                     <td>{{ $doctor->section->name }}</td>
                                     <td>{{ $doctor->created_at->diffForHumans() }}</td>
                                     <td class="d-flex ">

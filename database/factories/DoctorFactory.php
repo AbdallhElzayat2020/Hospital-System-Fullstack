@@ -25,11 +25,11 @@ class DoctorFactory extends Factory
             'name' => fake()->name(),
             'appointments' => fake()->randomElement(['saturday', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday']),
             'email' => fake()->unique()->safeEmail(),
-            'section_id' => Section::all()->random()->id,
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // password
             'phone' => fake()->phoneNumber(),
             'price' => fake()->numberBetween(100, 500),
+            'section_id' => Section::all()->random()->id,
         ];
     }
 }

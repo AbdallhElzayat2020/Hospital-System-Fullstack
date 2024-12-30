@@ -12,7 +12,10 @@ class Doctor extends Model
 {
     use HasFactory, Translatable;
 
-    public $translatedAttributes = ['name', 'appointments'];
+    public $translatedAttributes = [
+        'name',
+        'appointments',
+    ];
 
     public $fillable = [
         'email',
@@ -28,6 +31,7 @@ class Doctor extends Model
     /**
      * Get the Doctor's image polymorphic relationship
      */
+    // public function image()
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
@@ -36,8 +40,9 @@ class Doctor extends Model
     /**
      * Get the Section Name relationship
      */
+
     public function section()
     {
-        return $this->belongsTo(Section::class);
+        return $this->belongsTo(Section::class, 'section_id');
     }
 }

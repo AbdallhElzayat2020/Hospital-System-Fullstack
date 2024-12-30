@@ -3,7 +3,16 @@
     <!--Internal Sumoselect css-->
     <link rel="stylesheet" href="{{ URL::asset('Dashboard/plugins/sumoselect/sumoselect-rtl.css') }}">
     <!--Internal   Notify -->
+    <!-- Internal Data table css -->
+    {{-- <link href="{{ URL::asset('Dashboard/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('Dashboard/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet"> --}}
+    <!--Internal   Notify -->
     <link href="{{ URL::asset('Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+
 @section('title')
     {{ __('Dashboard/doctors.add_doctor') }}
 @endsection
@@ -146,9 +155,10 @@
                                 </label>
                             </div>
                             <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                <input type="file" accept="image/*" name="photo" onchange="loadFile(event)">
-                                <img style="border-radius:50%" width="150px" height="150px" id="output" />
+                                <input type="file" name="photo">
+                                {{-- <img style="border-radius:50%" width="150px" height="150px" id="output" /> --}}
                             </div>
+
                         </div>
 
 
@@ -170,7 +180,7 @@
 <!-- main-content closed -->
 @endsection
 @section('js')
-<script>
+{{-- <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
@@ -178,17 +188,17 @@
             URL.revokeObjectURL(output.src) // free memory
         }
     };
-</script>
+</script> --}}
 
 <!--Internal  Form-elements js-->
-<script src="{{ URL::asset('Dashboard/js/select2.js') }}"></script>
+{{-- <script src="{{ URL::asset('Dashboard/js/select2.js') }}"></script> --}}
 <script src="{{ URL::asset('Dashboard/js/advanced-form-elements.js') }}"></script>
 
 <!--Internal Sumoselect js-->
 <script src="{{ URL::asset('Dashboard/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
 <!--Internal  Notify js -->
-<script src="{{ URL::asset('dashboard/plugins/notify/js/notifIt.js') }}"></script>
-<script src="{{ URL::asset('/plugins/notify/js/notifit-custom.js') }}"></script>
+<script src="{{ URL::asset('Dashboard/plugins/notify/js/notifIt.js') }}"></script>
+<script src="{{ URL::asset('Dashboard/plugins/notify/js/notifit-custom.js') }}"></script>
 
 
 {{--  show password function --}}
@@ -198,6 +208,8 @@
         const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordField.setAttribute('type', type);
         this.classList.toggle('fa-eye-slash');
+        // console.log(e);
+        console.log(e.target.files);
     });
 </script>
 @endsection

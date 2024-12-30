@@ -8,13 +8,14 @@ use App\Models\Section;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use PhpParser\Comment\Doc;
 
 class doctorRepository implements DoctorRepositoryInterface
 {
     use UploadTrait;
     public function index()
     {
-        $doctors = Doctor::all();
+        $doctors = Doctor::with(['section'])->get();
         return view('Dashboard.Doctors.index', compact('doctors'));
     }
 
@@ -27,54 +28,13 @@ class doctorRepository implements DoctorRepositoryInterface
 
     public function store($request)
     {
+        //
 
 
-        // try {
-
-        //     DB::beginTransaction();
-
-        //     $doctor = new Doctor();
-
-        //     $doctor->name = $request->name;
-
-        //     $doctor->email = $request->email;
-
-        //     $doctor->password = Hash::make($request->password);
-
-        //     $doctor->phone = $request->phone;
-
-        //     $doctor->status = 1;
-
-        //     $doctor->price = $request->price;
-
-        //     $doctor->appointments = implode(',', $request->appointments);
-
-        //     $doctor->section_id = $request->section_id;
-
-        //     $doctor->save();
-
-        //     // upload image
-
-        //     $this->StoreImage($request, 'photo', 'Doctors', 'upload_Image', $doctor->id, Doctor::class);
-
-        //     DB::commit();
-
-        //     session()->flash('add', __('Dashboard/messages.add'));
-
-        //     return redirect()->route('doctors.index');
-        // } catch (\Throwable $e) {
-
-        //     DB::rollBack();
-
-        //     return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        // 
-
-
-        // $request->all();
+        //dd($request->file('photo'));
         DB::beginTransaction();
 
         try {
-
 
             $doctors = new Doctor();
             $doctors->email = $request->email;
@@ -91,11 +51,15 @@ class doctorRepository implements DoctorRepositoryInterface
 
 
             //Upload img
-            $this->StoreImage($request, 'photo', 'doctors', 'upload_image', $doctors->id, 'App\Models\Doctor');
+            if ($request->hasFile('photo')) {
+                $doctors->photo = $this->verifyAndStoreImage($request, 'photo', 'doctors', 'upload_image', $doctors->id, Doctor::class);
+            }
+            // $this->verifyAndStoreImage($request, 'photo', 'doctors', 'upload_Image', $doctors->id, Doctor::class);
 
             DB::commit();
+
             session()->flash('add', __('Dashboard/messages.add'));
-            return redirect()->route('doctors.index');
+            return redirect()->route('doctors.create');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -110,16 +74,16 @@ class doctorRepository implements DoctorRepositoryInterface
 
     public function update($request)
     {
-        $id = $request->id;
-        $doctor = Doctor::findOrFail($id);
-        $doctor->name = $request->name;
-        $doctor->email = $request->email;
-        $doctor->password = $request->password;
-        $doctor->phone = $request->phone;
-        $doctor->price = $request->price;
-        $doctor->appointments = $request->appointments;
-        $doctor->section_id = $request->section_id;
-        $doctor->save();
+        // $id = $request->id;
+        // $doctor = Doctor::findOrFail($id);
+        // $doctor->name = $request->name;
+        // $doctor->email = $request->email;
+        // $doctor->password = $request->password;
+        // $doctor->phone = $request->phone;
+        // $doctor->price = $request->price;
+        // $doctor->appointments = $request->appointments;
+        // $doctor->section_id = $request->section_id;
+        // $doctor->save();
 
         // return response()->json([
         //     'status' => true,

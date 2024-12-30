@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Doctors;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Doctors\DoctorRequest;
 use App\Interfaces\Doctors\DoctorRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,7 @@ class DoctorController extends Controller
         return $this->doctor->create();
     }
 
+    // public function store(DoctorRequest $request)
     public function store(Request $request)
     {
         return $this->doctor->store($request);

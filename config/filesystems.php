@@ -44,14 +44,25 @@ return [
             'throw' => false,
         ],
 
-        // upload_Image path
-        'upload_Image' => [
+        // upload_Image path 
+
+
+        'upload_image' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => public_path('Dashboard/img'),
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
-            'throw' => false,
         ],
+
+
+        // 'upload_Image' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('Dashboard/img'),
+        //     'url' => env('APP_URL') . '/storage',
+        //     'visibility' => 'public',
+        //     'throw' => false,
+        // ],
+
 
         's3' => [
             'driver' => 's3',
