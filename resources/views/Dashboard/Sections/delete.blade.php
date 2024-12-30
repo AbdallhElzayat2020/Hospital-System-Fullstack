@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="delete{{ $doctor->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="delete{{ $section->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -15,7 +15,7 @@
                 @method('delete')
                 @csrf
                 <div class="modal-body">
-                    <input type="hidden" name="id" value="{{ $doctor->id }}">
+                    <input type="hidden" name="id" value="{{ $section->id }}">
                     <h5>{{ trans('Dashboard/sections_trans.Warning') }}</h5>
                 </div>
                 <div class="modal-footer">

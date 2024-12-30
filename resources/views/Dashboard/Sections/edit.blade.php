@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="edit{{ $doctor->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="edit{{ $section->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -16,8 +16,8 @@
                 @csrf
                 <div class="modal-body">
                     <label for="exampleInputPassword1">{{ trans('Dashboard/sections_trans.section_title') }}</label>
-                    <input type="hidden" name="id" value="{{ $doctor->id }}">
-                    <input type="text" name="name" value="{{ $doctor->name }}" class="form-control">
+                    <input type="hidden" name="id" value="{{ $section->id }}">
+                    <input type="text" name="name" value="{{ $section->name }}" class="form-control">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"

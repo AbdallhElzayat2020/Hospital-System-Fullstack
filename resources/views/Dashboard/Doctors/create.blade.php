@@ -2,7 +2,8 @@
 @section('css')
     <!--Internal Sumoselect css-->
     <link rel="stylesheet" href="{{ URL::asset('Dashboard/plugins/sumoselect/sumoselect-rtl.css') }}">
-    <link href="{{ URL::asset('dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    <!--Internal   Notify -->
+    <link href="{{ URL::asset('Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @section('title')
     {{ __('Dashboard/doctors.add_doctor') }}
 @endsection
@@ -61,9 +62,11 @@
                                     {{ trans('Dashboard/doctors.password') }}
                                 </label>
                             </div>
-                            <div class="col-md-11 mg-t-5 mg-md-t-0">
+                            <div class="col-md-11  mg-t-5 mg-md-t-0 position-relative">
                                 <input class="form-control" placeholder="{{ __('Dashboard/doctors.password') }}"
-                                    name="password" type="password">
+                                    name="password" type="password" id="password">
+                                <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"
+                                    style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></span>
                             </div>
                         </div>
 
@@ -78,7 +81,6 @@
                                     placeholder="{{ __('Dashboard/doctors.phone') }}" type="tel">
                             </div>
                         </div>
-
 
                         <div class="row row-xs align-items-center mg-b-20">
                             <div class="col-md-1">
@@ -151,8 +153,9 @@
 
 
 
-                        <button type="submit"
-                            class="btn btn-main-primary pd-x-30 mg-r-5 mg-t-5">{{ trans('Dashboard/doctors.submit') }}</button>
+                        <button type="submit" class="btn btn-main-primary pd-x-30 mg-r-5 mg-t-5">
+                            {{ trans('Dashboard/doctors.submit') }}
+                        </button>
                     </div>
                 </form>
             </div>
@@ -186,4 +189,15 @@
 <!--Internal  Notify js -->
 <script src="{{ URL::asset('dashboard/plugins/notify/js/notifIt.js') }}"></script>
 <script src="{{ URL::asset('/plugins/notify/js/notifit-custom.js') }}"></script>
+
+
+{{--  show password function --}}
+<script>
+    document.querySelector('.toggle-password').addEventListener('click', function(e) {
+        const passwordField = document.querySelector('#password');
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
 @endsection

@@ -11,34 +11,29 @@ trait UploadTrait
 {
     public function StoreImage(Request $request, $inputname, $foldername, $disk, $imageable_id, $imageable_type)
     {
+
         if ($request->hasFile($inputname)) {
 
+            // Check img
             if (!$request->file($inputname)->isValid()) {
-
-                Session::flash('Invalid Image');
-
-                return redirect()->back()->withInput();
+                return redirect()->back()->withInput()->withErrors(['error' => 'Invalid Image']);
+                // return redirect()->back()->withInput();
             }
 
             $photo = $request->file($inputname);
-
             $name = Str::slug($request->input('name'));
-
             $filename = $name . '.' . $photo->getClientOriginalExtension();
 
-            //insert Image in DB with Plolymorphic relationship
+
+            // insert Image for polmorphic relationship
             $Image = new Image();
-
-            $Image->name = $filename;
-
+            $Image->file_name = $filename;
             $Image->imageable_id = $imageable_id;
-
             $Image->imageable_type = $imageable_type;
-
             $Image->save();
-
             return $request->file($inputname)->storeAs($foldername, $filename, $disk);
         }
+
         return null;
     }
 }

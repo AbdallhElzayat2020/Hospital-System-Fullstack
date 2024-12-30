@@ -6,10 +6,11 @@ use App\Interfaces\Doctors\DoctorRepositoryInterface;
 use App\Models\Doctor;
 use App\Models\Section;
 use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class doctorRepository implements DoctorRepositoryInterface
 {
-
     use UploadTrait;
     public function index()
     {
@@ -26,18 +27,79 @@ class doctorRepository implements DoctorRepositoryInterface
 
     public function store($request)
     {
-        // $doctor = new Doctor();
-        // $doctor->name = $request->name;
-        // $doctor->email = $request->email;
-        // $doctor->password = $request->password;
-        // $doctor->phone = $request->phone;
-        // $doctor->price = $request->price;
-        // $doctor->appointments = $request->appointments;
-        // $doctor->section_id = $request->section_id;
-        // $doctor->save();
-        // session()->flash('add', __('Dashboard/messages.add'));
-        // return redirect()->route('doctors.index');
 
+
+        // try {
+
+        //     DB::beginTransaction();
+
+        //     $doctor = new Doctor();
+
+        //     $doctor->name = $request->name;
+
+        //     $doctor->email = $request->email;
+
+        //     $doctor->password = Hash::make($request->password);
+
+        //     $doctor->phone = $request->phone;
+
+        //     $doctor->status = 1;
+
+        //     $doctor->price = $request->price;
+
+        //     $doctor->appointments = implode(',', $request->appointments);
+
+        //     $doctor->section_id = $request->section_id;
+
+        //     $doctor->save();
+
+        //     // upload image
+
+        //     $this->StoreImage($request, 'photo', 'Doctors', 'upload_Image', $doctor->id, Doctor::class);
+
+        //     DB::commit();
+
+        //     session()->flash('add', __('Dashboard/messages.add'));
+
+        //     return redirect()->route('doctors.index');
+        // } catch (\Throwable $e) {
+
+        //     DB::rollBack();
+
+        //     return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        // 
+
+
+        // $request->all();
+        DB::beginTransaction();
+
+        try {
+
+
+            $doctors = new Doctor();
+            $doctors->email = $request->email;
+            $doctors->password = Hash::make($request->password);
+            $doctors->section_id = $request->section_id;
+            $doctors->phone = $request->phone;
+            $doctors->price = $request->price;
+            $doctors->status = 1;
+            $doctors->save();
+            // store trans
+            $doctors->name = $request->name;
+            $doctors->appointments = implode(",", $request->appointments);
+            $doctors->save();
+
+
+            //Upload img
+            $this->StoreImage($request, 'photo', 'doctors', 'upload_image', $doctors->id, 'App\Models\Doctor');
+
+            DB::commit();
+            session()->flash('add', __('Dashboard/messages.add'));
+            return redirect()->route('doctors.index');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function edit($id)
