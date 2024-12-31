@@ -13,5 +13,5 @@ return [
     'Warning' => 'Are Sure Of The Deleting Process ?',
     'Close' => 'Close',
     'required' => 'name filed is required can\'t make it Empty',
-
+    'section_description' => 'Section Description'
 ];

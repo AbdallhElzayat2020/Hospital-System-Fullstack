@@ -28,6 +28,7 @@ class SectionFactory extends Factory
                 'قسم العيون',
                 'قسم الباطنة'
             ]),
+            'description' => fake()->paragraph(),
         ];
     }
 }

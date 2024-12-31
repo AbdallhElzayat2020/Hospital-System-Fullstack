@@ -64,6 +64,9 @@
                                 <th class="wd-15p border-bottom-0">#</th>
                                 <th class="wd-15p border-bottom-0">{{ __('Dashboard/sections_trans.section_title') }}
                                 </th>
+                                <th class="wd-15p border-bottom-0">
+                                    {{ __('Dashboard/sections_trans.section_description') }}
+                                </th>
                                 <th class="wd-20p border-bottom-0">{{ __('Dashboard/sections_trans.section_date') }}
                                 </th>
                                 <th class="wd-25p border-bottom-0">{{ __('Dashboard/sections_trans.Operations') }}</th>
@@ -74,6 +77,7 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $section->name }}</td>
+                                    <td>{{ Str::limit($section->description, 5) }}</td>
                                     <td>{{ $section->created_at->diffForHumans() }}</td>
                                     <td>
                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
