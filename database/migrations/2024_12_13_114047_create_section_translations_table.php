@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('locale')->index();
 
             // Foreign key to the main model
-            // $table->unsignedBigInteger('section_id');
             $table->unique(['section_id', 'locale']);
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
 
