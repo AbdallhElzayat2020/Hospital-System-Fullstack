@@ -4,8 +4,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                    {{ trans('Dashboard/doctors.delete_doctor') }}</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">
+                    {{ trans('doctors.delete_select') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -14,11 +14,7 @@
                 @method('delete')
                 @csrf
                 <div class="modal-body">
-                    <h5 class="text-white">{{ trans('Dashboard/sections_trans.Warning') }}</h5>
-                    <input type="hidden" value="2" name="page_id">
-                    @if ($doctor->image)
-                        <input type="text" name="filename" value="{{ $doctor->image->filename }}">
-                    @endif
+                    <h5>{{ trans('Dashboard/sections_trans.Warning') }}</h5>
                     <input type="hidden" id="delete_select_id" name="delete_select_id" value=''>
                 </div>
                 <div class="modal-footer">

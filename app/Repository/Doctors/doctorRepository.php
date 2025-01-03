@@ -5,6 +5,7 @@ namespace App\Repository\Doctors;
 use App\Interfaces\Doctors\DoctorRepositoryInterface;
 use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Models\Image;
 use App\Models\Section;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\DB;
@@ -97,18 +98,51 @@ class doctorRepository implements DoctorRepositoryInterface
     {
         if ($request->page_id == 1) {
 
+            // check if doctor has image
             if ($request->filename) {
-
-                $this->Delete_attachment('upload_image', 'doctors/' . $request->filename, $request->id, $request->filename);
+                // use trait for delete File
+                $this->Delete_attachment(
+                    'upload_image',
+                    'doctors/' . $request->filename,
+                    $request->id,
+                    $request->filename
+                );
             }
+            // any way to delete doctor if has img or not
             Doctor::destroy($request->id);
+            // flash message
             session()->flash('delete', __('Dashboard/messages.delete'));
+
             return redirect()->route('doctors.index');
         }
-
-        //---------------------------------------------------------------
-
+        //------------------
         else {
+
+            $delete_select_id = explode(',', $request->delete_select_id);
+
+
+
+            foreach ($delete_select_id as $doctor_ids) {
+                //
+                $doctor = Doctor::findOrFail($doctor_ids);
+
+                // check if doctor has image
+                if ($doctor->image) {
+
+                    // use trait for delete File
+
+                    $this->Delete_attachment(
+                        'upload_image',
+                        'doctors/' . $doctor->image->filename,
+                        $doctor->id,
+                        $doctor->image->filename
+                    );
+                }
+                Doctor::destroy($doctor_ids);
+
+                session()->flash('delete', __('Dashboard/messages.delete'));
+                return redirect()->route('doctors.index');
+            }
         }
     }
 }

@@ -36,10 +36,13 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header pb-0">
-                <div class="d-flex justify-content-between">
+                <div class="">
                     <a href="{{ route('doctors.create') }}" class="btn btn-primary">
                         {{ trans('Dashboard/doctors.add_doctor') }}
                     </a>
+                    <button type="button" class="btn btn-sm btn-danger"
+                        id="btn_delete_all">{{ trans('Dashboard/doctors.delete_doctor') }}
+                    </button>
 
                 </div>
             </div>
@@ -48,7 +51,8 @@
                     <table class="table text-md-nowrap" id="example2">
                         <thead>
                             <tr>
-                                <th class="wd-15p border-bottom-0">#</th>
+                                <th class=" border-bottom-0">#</th>
+                                <th><input name="select_all" id="example-select-all" type="checkbox" /></th>
                                 <th class="wd-15p border-bottom-0">{{ __('Dashboard/doctors.doctor_photo') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ __('Dashboard/doctors.doctor_name') }}
                                 </th>
@@ -72,7 +76,11 @@
                         <tbody>
                             @forelse ($doctors as $key=> $doctor)
                                 <tr>
+
                                     <td>{{ $key + 1 }}</td>
+                                    <td><input type="checkbox" name="delete_select" value="{{ $doctor->id }}"
+                                            class="delete_select">
+                                    </td>
                                     <td>
                                         @if ($doctor->image)
                                             <img src="{{ asset('Dashboard/img/doctors/' . $doctor->image->filename) }}"
@@ -108,6 +116,7 @@
                                     </td>
                                 </tr>
                                 @include('Dashboard.Doctors.delete')
+                                @include('Dashboard.Doctors.delete_select')
                             @empty
                                 <tr>
                                     <td colspan="8" class="text-center">
@@ -122,68 +131,6 @@
         </div><!-- bd -->
     </div>
 </div>
-
-
-{{-- <div class="row">
-    <div class="col-xl-12">
-        <div class="card">
-            <div class="card-header pb-0">
-                <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add">
-                        {{ trans('Dashboard/doctors.add_doctor') }}
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table text-md-nowrap" id="example2">
-                        <thead>
-                            <tr>
-                                <th class="wd-15p border-bottom-0">#</th>
-                                <th class="wd-15p border-bottom-0">{{ __('Dashboard/doctors.doctor_name') }}
-                                </th>
-                                <th class="wd-20p border-bottom-0">{{ __('Dashboard/sections_trans.section_date') }}
-                                </th>
-                                <th class="wd-25p border-bottom-0">{{ __('Dashboard/sections_trans.Operations') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($doctors as $key=> $doctor)
-                                <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>{{ $doctor->name }}</td>
-                                    <td>{{ $doctor->created_at->diffForHumans() }}</td>
-                                    <td>
-                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                            data-toggle="modal" href="#edit{{ $doctor->id }}">
-                                            <i class="las la-pen"></i>
-                                        </a>
-                                        <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                            data-toggle="modal" href="#delete{{ $doctor->id }}">
-                                            <i class="las la-trash"></i>
-                                        </a>
-                                    </td>
-
-                                </tr>
-                                @include('Dashboard.Doctors.edit')
-                                @include('Dashboard.Doctors.delete')
-                            @empty
-                                <tr>
-                                    <td colspan="8" class="text-center">
-                                        {{ __('Dashboard/sections_trans.NoSections') }}
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div><!-- bd -->
-        </div><!-- bd -->
-        @include('Dashboard.Sections.add')
-    </div>
-</div> --}}
-
-
 <!-- row closed -->
 </div>
 <!-- Container closed -->
@@ -191,6 +138,37 @@
 <!-- main-content closed -->
 @endsection
 @section('js')
+{{-- select all checkbox --}}
+<script>
+    $(function() {
+        jQuery("[name=select_all]").click(function(source) {
+            checkboxes = jQuery("[name=delete_select]");
+            for (var i in checkboxes) {
+                checkboxes[i].checked = source.target.checked;
+            }
+        });
+    })
+</script>
+
+{{-- delete all checkbox --}}
+<script type="text/javascript">
+    $(function() {
+        $("#btn_delete_all").click(function() {
+            var selected = [];
+            $("#example input[name=delete_select]:checked").each(function() {
+                selected.push(this.value);
+            });
+
+            if (selected.length > 0) {
+                $('#delete_select').modal('show')
+                $('input[id="delete_select_id"]').val(selected);
+            }
+        });
+    });
+</script>
+
+
+
 <!-- Internal Data tables -->
 <script src="{{ URL::asset('Dashboard/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ URL::asset('Dashboard/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
