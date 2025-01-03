@@ -49,6 +49,7 @@
                         <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">#</th>
+                                <th class="wd-15p border-bottom-0">{{ __('Dashboard/doctors.doctor_photo') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ __('Dashboard/doctors.doctor_name') }}
                                 </th>
                                 <th class="wd-20p border-bottom-0">{{ __('Dashboard/doctors.doctor_email') }}
@@ -72,6 +73,15 @@
                             @forelse ($doctors as $key=> $doctor)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
+                                    <td>
+                                        @if ($doctor->image)
+                                            <img src="{{ asset('Dashboard/img/doctors/' . $doctor->image->filename) }}"
+                                                class="avatar brround" alt="{{ $doctor->name }}">
+                                        @else
+                                            <img src="{{ asset('Dashboard/img/doctors/default_img.jpg') }}"
+                                                class="avatar brround" alt="Default img">
+                                        @endif
+                                    </td>
                                     <td>{{ $doctor->name }}</td>
                                     <td>{{ $doctor->email }}</td>
                                     <td>{{ $doctor->phone }}</td>

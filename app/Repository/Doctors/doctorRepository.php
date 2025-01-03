@@ -3,12 +3,12 @@
 namespace App\Repository\Doctors;
 
 use App\Interfaces\Doctors\DoctorRepositoryInterface;
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Section;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use PhpParser\Comment\Doc;
 
 class doctorRepository implements DoctorRepositoryInterface
 {
@@ -22,8 +22,8 @@ class doctorRepository implements DoctorRepositoryInterface
     public function create()
     {
         $sections = Section::all();
-        // return "test";
-        return view('Dashboard.Doctors.create', compact('sections'));
+        $appointments = Appointment::all();
+        return view('Dashboard.Doctors.create', compact('sections', 'appointments'));
     }
 
     public function store($request)
@@ -89,15 +89,26 @@ class doctorRepository implements DoctorRepositoryInterface
         //     'status' => true,
         //     'msg' => 'Doctor Updated Successfully',
         // ]);
-        session()->flash('add', __('Dashboard/messages.add'));
+        session()->flash('edit', __('Dashboard/messages.edit'));
         return redirect()->route('doctors.index');
     }
 
     public function destroy($request)
     {
-        $id = $request->id;
-        Doctor::findOrFail($id)->delete();
-        session()->flash('delete', __('Dashboard/messages.delete'));
-        return redirect()->route('doctors.index');
+        if ($request->page_id == 1) {
+
+            if ($request->filename) {
+
+                $this->Delete_attachment('upload_image', 'doctors/' . $request->filename, $request->id, $request->filename);
+            }
+            Doctor::destroy($request->id);
+            session()->flash('delete', __('Dashboard/messages.delete'));
+            return redirect()->route('doctors.index');
+        }
+
+        //---------------------------------------------------------------
+
+        else {
+        }
     }
 }

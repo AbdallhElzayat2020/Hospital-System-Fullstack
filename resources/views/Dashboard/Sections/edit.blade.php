@@ -15,9 +15,12 @@
                 @method('put')
                 @csrf
                 <div class="modal-body">
-                    <label for="exampleInputPassword1">{{ trans('Dashboard/sections_trans.section_title') }}</label>
                     <input type="hidden" name="id" value="{{ $section->id }}">
+                    <label for="name">{{ trans('Dashboard/sections_trans.section_title') }}</label>
                     <input type="text" name="name" value="{{ $section->name }}" class="form-control">
+
+                    <label for="description">{{ trans('Dashboard/sections_trans.section_description') }}</label>
+                    <input type="text" name="description" value="{{ $section->description }}" class="form-control">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"

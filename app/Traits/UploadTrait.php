@@ -3,8 +3,10 @@
 namespace App\Traits;
 
 use App\Models\Image;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 trait UploadTrait
@@ -34,5 +36,21 @@ trait UploadTrait
         }
 
         return null;
+    }
+
+    // public function deleteImage($disk, $path, $filename, $id)
+    // {
+
+    //     Storage::disk($disk)->delete($path);
+
+    //     Image::where('id', $id)->where('filename', $filename)->delete();
+    // }
+
+
+    public function Delete_attachment($disk, $path, $id, $filename)
+    {
+
+        Storage::disk($disk)->delete($path);
+        Image::where('id', $id)->where('filename', $filename)->delete();
     }
 }

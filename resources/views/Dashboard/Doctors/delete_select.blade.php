@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="delete{{ $doctor->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="delete_select" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -14,25 +14,18 @@
                 @method('delete')
                 @csrf
                 <div class="modal-body">
-                    <h5>{{ trans('Dashboard/sections_trans.Warning') }}</h5>
-                    {{-- for delete one doctor  --}}
-                    <input type="hidden" value="1" name="page_id">
-                    {{-- check if doctor has image --}}
+                    <h5 class="text-white">{{ trans('Dashboard/sections_trans.Warning') }}</h5>
+                    <input type="hidden" value="2" name="page_id">
                     @if ($doctor->image)
-                        {{-- get image name --}}
-                        <input type="hidden" name="filename" value="{{ $doctor->image->filename }}">
+                        <input type="text" name="filename" value="{{ $doctor->image->filename }}">
                     @endif
-                    {{-- delete doctor with out Image --}}
-                    <input type="hidden" name="id" value="{{ $doctor->id }}">
-
+                    <input type="hidden" id="delete_select_id" name="delete_select_id" value=''>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">{{ trans('Dashboard/sections_trans.Close') }}
-                    </button>
-                    <button type="submit" class="btn btn-danger">
-                        {{ trans('Dashboard/sections_trans.submit') }}
-                    </button>
+                        data-dismiss="modal">{{ trans('Dashboard/sections_trans.Close') }}</button>
+                    <button type="submit"
+                        class="btn btn-danger">{{ trans('Dashboard/sections_trans.submit') }}</button>
                 </div>
             </form>
         </div>

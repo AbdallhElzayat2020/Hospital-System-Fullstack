@@ -75,7 +75,8 @@
                                 <input class="form-control" placeholder="{{ __('Dashboard/doctors.password') }}"
                                     name="password" type="password" id="password">
                                 <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"
-                                    style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></span>
+                                    style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                </span>
                             </div>
                         </div>
 
@@ -119,16 +120,12 @@
 
                             <div class="col-md-11 mg-t-5 mg-md-t-0">
                                 <select multiple="multiple" class="testselect2" name="appointments[]">
-                                    <option selected value="" selected disabled>-- حدد المواعيد --</option>
-                                    <option value="السبت">السبت</option>
-                                    <option value="الأحد">الأحد</option>
-                                    <option value="الأثنين">الأثنين</option>
-                                    <option value="الثلاثاء">الثلاثاء</option>
-                                    <option value="الأربعاء">الأربعاء</option>
-                                    <option value="الخميس">الخميس</option>
-                                    <option value="الجمعة">الجمعة</option>
+                                    <option selected value="" selected disabled>
+                                        -- {{ trans('Dashboard/doctors.appointments') }} --</option>
+                                    @foreach ($appointments as $appointment)
+                                        <option value="{{ $appointment->id }}">{{ $appointment->name }}</option>
+                                    @endforeach
                                 </select>
-
                             </div>
 
                         </div>

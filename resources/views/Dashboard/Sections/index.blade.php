@@ -33,7 +33,7 @@
 @include('Dashboard.messages_alert')
 
 
-{{-- 
+{{--
 @if (session('add'))
     <div class="alert alert-success">{{ session('add') }}</div>
 @endif
@@ -62,6 +62,7 @@
                         <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">#</th>
+
                                 <th class="wd-15p border-bottom-0">{{ __('Dashboard/sections_trans.section_title') }}
                                 </th>
                                 <th class="wd-15p border-bottom-0">
@@ -77,7 +78,9 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $section->name }}</td>
-                                    <td>{{ Str::limit($section->description, 5) }}</td>
+                                    {{-- for limit the text of pragraph --}}
+                                    {{-- <td>{{ Str::limit($section->description, 150) }}</td> --}}
+                                    <td>{{ $section->description }}</td>
                                     <td>{{ $section->created_at->diffForHumans() }}</td>
                                     <td>
                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
@@ -89,7 +92,6 @@
                                             <i class="las la-trash"></i>
                                         </a>
                                     </td>
-
                                 </tr>
                                 @include('Dashboard.Sections.edit')
                                 @include('Dashboard.Sections.delete')

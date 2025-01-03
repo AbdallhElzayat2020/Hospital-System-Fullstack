@@ -15,6 +15,7 @@ class SectionController extends Controller
     {
         $this->section = $section;
     }
+
     /**
      * Display a listing of the resource.
      */
