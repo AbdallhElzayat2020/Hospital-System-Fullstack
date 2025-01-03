@@ -49,7 +49,7 @@
                                     {{ trans('Dashboard/doctors.doctor_name') }}</label>
                             </div>
                             <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                <input class="form-control" name="name"
+                                <input autofocus class="form-control" name="name"
                                     placeholder="{{ __('Dashboard/doctors.doctor_name') }}" type="text">
                             </div>
                         </div>
@@ -130,7 +130,7 @@
 
                         </div>
 
-                        <div class="row row-xs align-items-center mg-b-20">
+                        {{-- <div class="row row-xs align-items-center mg-b-20">
                             <div class="col-md-1">
                                 <label for="price">
                                     {{ trans('Dashboard/doctors.price') }}
@@ -141,7 +141,7 @@
                                 <input class="form-control" name="price" value="0.00" type="text">
                             </div>
 
-                        </div>
+                        </div> --}}
 
 
 

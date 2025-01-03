@@ -14,7 +14,6 @@ class Doctor extends Model
 
     public $translatedAttributes = [
         'name',
-        'appointments',
     ];
 
     public $fillable = [
@@ -22,9 +21,7 @@ class Doctor extends Model
         'email_verified_at',
         'password',
         'phone',
-        'price',
         'name',
-        'appointments',
         'section_id', //relation with section
     ];
 

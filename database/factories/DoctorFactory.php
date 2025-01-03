@@ -19,16 +19,16 @@ class DoctorFactory extends Factory
      */
     protected $model = Doctor::class;
 
+    // relationship
     public function definition(): array
     {
         return [
             'name' => fake()->name(),
-            'appointments' => fake()->randomElement(['saturday', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday']),
+            // 'appointments' => fake()->randomElement(['saturday', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday']),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // password
             'phone' => fake()->phoneNumber(),
-            'price' => fake()->numberBetween(100, 500),
             'section_id' => Section::all()->random()->id,
         ];
     }

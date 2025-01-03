@@ -42,14 +42,12 @@ class doctorRepository implements DoctorRepositoryInterface
             $doctors->password = Hash::make($request->password);
             $doctors->section_id = $request->section_id;
             $doctors->phone = $request->phone;
-            $doctors->price = $request->price;
             $doctors->status = 1;
             $doctors->save();
             // store trans
             $doctors->name = $request->name;
             $doctors->appointments = implode(",", $request->appointments);
             $doctors->save();
-
 
             //Upload img
             if ($request->hasFile('photo')) {
